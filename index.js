@@ -2,7 +2,9 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var redis = require("redis");
-var client = redis.createClient();
+var client = redis.createClient(6379,
+                                process.env.REDIS_HOST,
+                                {auth_pass:  process.env.REDIS_KEY});
 var app = express();
 
 // view engine setup
