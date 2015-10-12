@@ -26,7 +26,7 @@ app.post('/value', function(req, res) {
     res.redirect('/');
 });
 
-var server = app.listen(7777, function () {
+var server = app.listen(process.env.PORT, function () {
     var host = server.address().address;
     var port = server.address().port;
 
