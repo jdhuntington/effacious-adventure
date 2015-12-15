@@ -2,9 +2,8 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var redis = require("redis");
-var client = redis.createClient(6379,
-                                process.env.REDIS_HOST,
-                                {auth_pass:  process.env.REDIS_KEY});
+console.log("Pointing to redis at " + process.env.REDIS_PORT_6379_TCP_PORT + ":" +process.env.REDIS_PORT_6379_TCP_ADDR);
+var client = redis.createClient(process.env.REDIS_PORT_6379_TCP_PORT, process.env.REDIS_PORT_6379_TCP_ADDR);
 var app = express();
 
 // view engine setup
