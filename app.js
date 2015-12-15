@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var redis = require("redis");
-console.log("Pointing to redis at " + process.env.REDIS_PORT_6379_TCP_PORT + ":" +process.env.REDIS_PORT_6379_TCP_ADDR);
+console.log("Pointing to redis at " + process.env.REDIS_PORT_6379_TCP_ADDR + ":" +process.env.REDIS_PORT_6379_TCP_PORT);
 var client = redis.createClient(process.env.REDIS_PORT_6379_TCP_PORT, process.env.REDIS_PORT_6379_TCP_ADDR);
 var app = express();
 
@@ -25,7 +25,7 @@ app.post('/value', function(req, res) {
     res.redirect('/');
 });
 
-var server = app.listen(process.env.PORT, function () {
+var server = app.listen(8081, function () {
     var host = server.address().address;
     var port = server.address().port;
 
